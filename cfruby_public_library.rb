@@ -34,7 +34,7 @@ class Shelf
 end
 
 class Book #Make the book object have "enshelf" and "unshelf" methods that control what shelf the book is sitting on.
-	attr_reader :shelf, :name
+	attr_reader :shelf, :title
 
 		$count = 0
 
