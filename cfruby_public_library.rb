@@ -38,8 +38,8 @@ class Book #Make the book object have "enshelf" and "unshelf" methods that contr
 
 		$count = 0
 
-	def initialize(name, library)
-		@name = name
+	def initialize(title, library)
+		@title = title
     @library = library
     $count += 1
   end
@@ -47,12 +47,12 @@ class Book #Make the book object have "enshelf" and "unshelf" methods that contr
 	def enshelf(shelf)
 		@shelf = shelf
 		shelf.return(self)
-		puts "Thanks for returning!"
+		puts "Thanks for returning your book!"
 	end
 
 	def unshelf
 		@shelf.check_out(self)
-		puts "Checking out #{(self)}..."
+		puts "Checking out #{title}..."
 	end
 
 	def self.total
