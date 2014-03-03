@@ -1,5 +1,5 @@
 class Library
-	attr_reader :shelf, :books
+  attr_reader :shelf, :books
 	def initialize
 		@shelf = []
 		@books = []
