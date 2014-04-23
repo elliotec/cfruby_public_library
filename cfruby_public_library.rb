@@ -1,61 +1,61 @@
 class Library
   attr_reader :shelf, :books
-	def initialize
-		@shelf = []
-		@books = []
-	end
+  def initialize
+    @shelf = []
+    @books = []
+  end
 
-	def report_all
-		puts "Currently in the library we have #{Book.total} books."
-	end
+  def report_all
+    puts "Currently in the library we have #{Book.total} books."
+  end
 
-	def add_shelf(shelf)
-		@shelf.push(self)
+  def add_shelf(shelf)
+    @shelf.push(self)
   end
 end
 
-class Shelf 
-	attr_reader :books
+class Shelf
+  attr_reader :books
   def initialize(library)
     library.add_shelf(self)
     @books = []
   end
 
   def check_out(book)
-  	@books.delete(book)
-  	$count += -1
+    @books.delete(book)
+    $count += -1
   end
 
   def return(book)
-    @books.push(book) 
+    @books.push(book)
   end
 end
 
-class Book 
-	attr_reader :shelf, :title
+class Book
+  attr_reader :shelf, :title
 
-		$count = 0
+  $count = 0
 
-	def initialize(title, library)
-		@title = title
+  def initialize(title, library)
+    @title = title
     @library = library
     $count += 1
   end
 
-	def enshelf(shelf)
-		@shelf = shelf
-		shelf.return(self)
-		puts "Thanks for returning your book!"
-	end
+  def enshelf(shelf)
+    @shelf = shelf
+    shelf.return(self)
+    puts "Thanks for returning your book!"
+  end
 
-	def unshelf
-		@shelf.check_out(self)
-		puts "Checking out #{title}..."
-	end
+  def unshelf
+    @shelf.check_out(self)
+    puts "Checking out #{title}..."
+  end
 
-	def self.total
-		$count
-	end
+  def self.total
+    $count
+  end
 end
 
 # COMMANDS =====
